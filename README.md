@@ -120,7 +120,7 @@ The SQLite database is auto-created on first run.
 
 ### Endpoint
 
-POST /identify
+POST `http://localhost:3000/identify`
 
 ### Headers
 
