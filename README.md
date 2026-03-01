@@ -266,7 +266,7 @@ http://localhost:3000/
 
 This project uses **SQLite** as the database.
 
-### Option 1: Using VS Code Extension (Recommended)
+### Option 1: Using VS Code Extension
 
 1. Open VS Code
 2. Install a SQLite extension (e.g., **SQLite Viewer** or **SQLite Explorer**)
@@ -278,9 +278,13 @@ Open terminal in the project root and run:
 
 ```bash
 sqlite3 database.db
+```
 
+```bash
 .tables
+```
 
+```bash
 SELECT * FROM Contact;
 ```
 
