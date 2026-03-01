@@ -171,12 +171,16 @@ Example 3:
 }
 ```
 
+**Case 1:** If the email already exists, the service resolves it to the existing primary contact and returns the consolidated identity without creating a new record.
+
+**Case 2:** If the email does not exist, a new primary contact is created and the newly created customer identity is returned.
+
 
 ## Testing the API
 ### You can test the API using tools like Postman or curl.
 
 ### Using curl
-#### Identify Using Email Only
+#### Using Email Only
 ```
 curl -X POST http://localhost:3000/identify \
 -H "Content-Type: application/json" \
@@ -186,7 +190,7 @@ curl -X POST http://localhost:3000/identify \
 ```
 
 or 
-#### Identify Using Mobile number Only
+#### Using Mobile number Only
 
 ```
 curl -X POST http://localhost:3000/identify \
@@ -195,7 +199,7 @@ curl -X POST http://localhost:3000/identify \
 ```
 
 or
-#### Identify Using Email and Mobile number
+#### Using Email and Mobile number
 ```
 curl -X POST http://localhost:3000/identify \
 -H "Content-Type: application/json" \
