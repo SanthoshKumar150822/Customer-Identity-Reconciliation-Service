@@ -240,15 +240,17 @@ or
 
 The application provides a simple web interface to check customer identity.
 
-**URL:**  
-`http://localhost:3000/`
+**URL**  
+```
+http://localhost:3000/
+```
 
 ### UI Screen
 **Check Customer Identity**
 
 ### Input Fields
-- **Enter Email** (optional)
-- **Enter Phone Number** (optional)
+- **Enter Email**
+- **Enter Phone Number**
 
 > At least one field (Email or Phone Number) must be provided.
 
@@ -257,9 +259,6 @@ The application provides a simple web interface to check customer identity.
 2. Enter an email or phone number
 3. Click **Check**
 4. The consolidated customer identity is displayed in a table format
-
----
-
 
 ---
 
