@@ -288,7 +288,77 @@ sqlite3 database.db
 SELECT * FROM Contact;
 ```
 
+## Database CRUD Operations (SQLite)
+
+The application uses a `Contact` table to store customer identities. 
+
+Below are basic **CRUD (Create, Read, Update, Delete)** operations for reference and debugging.
+
 ---
+
+### Create (INSERT)
+
+Insert a new primary contact:
+
+```sql
+INSERT INTO Contact (email, phoneNumber, linkPrecedence, createdAt, updatedAt)
+VALUES ('user@example.com', '9876543210', 'primary', datetime('now'), datetime('now'));
+```
+
+Insert a secondary contact linked to a primary contact:
+```
+INSERT INTO Contact (email, phoneNumber, linkedId, linkPrecedence, createdAt, updatedAt)
+VALUES ('alt@example.com', NULL, 1, 'secondary', datetime('now'), datetime('now'));
+Read (SELECT)
+```
+
+View all contacts:
+```
+SELECT * FROM Contact;
+```
+
+Find contact by email:
+```
+SELECT * FROM Contact WHERE email = 'user@example.com';
+```
+
+Find contact by phone number:
+```
+SELECT * FROM Contact WHERE phoneNumber = '9876543210';
+```
+
+Find all contacts linked to a primary contact:
+```
+SELECT * FROM Contact WHERE id = 1 OR linkedId = 1;
+Update (UPDATE)
+```
+Convert a primary contact to secondary:
+
+UPDATE Contact
+```
+SET linkPrecedence = 'secondary', linkedId = 1
+WHERE id = 2;
+```
+
+Update email or phone number:
+```
+UPDATE Contact
+SET email = 'new@example.com', updatedAt = datetime('now')
+WHERE id = 1;
+```
+Delete (Soft Delete)
+
+Soft delete a contact record:
+```
+UPDATE Contact
+SET deletedAt = datetime('now')
+WHERE id = 3;
+```
+
+Records are soft-deleted to preserve identity history.
+
+---
+
 
 ## Deployment on Render.com
 
