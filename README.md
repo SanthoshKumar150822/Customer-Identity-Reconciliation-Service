@@ -161,8 +161,7 @@ Example 3:
 "primaryContatctId": 1,
 "emails": [
 "user@example.com",
-"alt@example.com
-"
+"alt@example.com"
 ],
 "phoneNumbers": [
 "9876543210"
@@ -185,8 +184,28 @@ curl -X POST http://localhost:3000/identify \
 }'
 ```
 
+or 
+
+```
+curl -X POST <DEPLOYED_URL>/identify \
+-H "Content-Type: application/json" \
+-d '{ "phoneNumber": "9876543210" }'
+```
+
+or
+
+```
+curl -X POST <DEPLOYED_URL>/identify \
+-H "Content-Type: application/json" \
+-d '{
+  "email": "dhoniplaybook@gmail.com",
+  "phoneNumber": "6379314514"
+}'
+```
+
 #### Using Postman
-POST http://localhost:3000/identify
+POST (http://localhost:3000/identify)
+
 Content-Type: application/json
 ```
 {
@@ -199,7 +218,7 @@ Content-Type: application/json
 
 ## Deployment on Render.com
 
-1. Create an account at [Render] (https://render.com)  
+1. Create an account at [Render](https://render.com)  
 2. Create a new **Web Service**
 3. Connect your GitHub repository
 4. Configure the service:
