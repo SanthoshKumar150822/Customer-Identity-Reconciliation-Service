@@ -72,7 +72,7 @@ Customer-Identity-Reconciliation-Service/
 ## Setup Instructions
 
 ### 1. Install Node.js
-Download and install Node.js (LTS version): ([NodeJs](https://nodejs.org))
+Download and install Node.js (LTS version): [Nodejs](https://nodejs.org)
 
 Verify installation:
 ```
@@ -86,20 +86,27 @@ npm -v
 ---
 
 ### 2. Clone the Repository
+```
 git clone https://github.com/SanthoshKumar150822/Customer-Identity-Reconciliation-Service.git
-cd Customer-Identity-Reconciliation-Service
+```
 
+```
+cd Customer-Identity-Reconciliation-Service
+```
 
 ---
 
 ### 3. Install Dependencies
+```
 npm install
-
+```
 
 ---
 
 ### 4. Run the Application Locally
+```
 npm run dev
+```
 
 The server will start at:http://localhost:3000
 The SQLite database is auto-created on first run.
@@ -120,23 +127,26 @@ Content-Type: application/json
 ### Request Body (Email or Phone Required)
 
 Example 1:
+```
 {
 "email": "user@example.com"
 }
-
+```
 
 Example 2:
+```
 {
 "phoneNumber": "9876543210"
 }
-
+```
 
 Example 3:
+```
 {
 "email": "user@example.com",
 "phoneNumber": "9876543210"
 }
-
+```
 
 
 ---
@@ -163,21 +173,23 @@ You can test the API using tools like Postman or curl.
 Example API call: 
 
 Using curl
+```
 curl -X POST http://localhost:3000/identify \
 -H "Content-Type: application/json" \
 -d '{
   "email": "example@gmail.com"
 }'
+```
 
 Using Postman
 POST http://localhost:3000/identify
 Content-Type: application/json
-
+```
 {
   "email": "example@gmail.com",
   "phoneNumber": "9876543210"
 }
-
+```
 
 ---
 
