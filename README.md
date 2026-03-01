@@ -262,6 +262,30 @@ http://localhost:3000/
 
 ---
 
+## Viewing Database Table in VS Code
+
+This project uses **SQLite** as the database.
+
+### Option 1: Using VS Code Extension (Recommended)
+
+1. Open VS Code
+2. Install a SQLite extension (e.g., **SQLite Viewer** or **SQLite Explorer**)
+3. Open the file: `database.db`
+
+### Option 2: Using SQLite CLI
+
+Open terminal in the project root and run:
+
+```bash
+sqlite3 database.db
+
+.tables
+
+SELECT * FROM Contact;
+```
+
+---
+
 ## Deployment on Render.com
 
 1. Create an account at [Render](https://render.com)  
