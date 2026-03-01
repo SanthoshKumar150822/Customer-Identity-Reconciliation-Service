@@ -189,7 +189,7 @@ or
 #### Identify Using Mobile number Only
 
 ```
-curl -X POST <DEPLOYED_URL>/identify \
+curl -X POST http://localhost:3000/identify \
 -H "Content-Type: application/json" \
 -d '{ "phoneNumber": "9876543210" }'
 ```
@@ -197,7 +197,7 @@ curl -X POST <DEPLOYED_URL>/identify \
 or
 #### Identify Using Email and Mobile number
 ```
-curl -X POST <DEPLOYED_URL>/identify \
+curl -X POST http://localhost:3000/identify \
 -H "Content-Type: application/json" \
 -d '{
   "email": "dhoniplaybook@gmail.com",
