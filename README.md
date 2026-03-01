@@ -108,8 +108,10 @@ npm install
 npm run dev
 ```
 
-The server will start at:http://localhost:3000
-
+The server will start at
+```
+http://localhost:3000
+```
 The SQLite database is auto-created on first run.
 
 ---
@@ -153,6 +155,7 @@ Example 3:
 ---
 
 ### Sample Response
+```
 {
 "contact": {
 "primaryContatctId": 1,
@@ -167,13 +170,13 @@ Example 3:
 "secondaryContactIds": [2, 3]
 }
 }
+```
+
 
 ## Testing the API
-You can test the API using tools like Postman or curl.
+### You can test the API using tools like Postman or curl.
 
-Example API call: 
-
-Using curl
+#### Using curl
 ```
 curl -X POST http://localhost:3000/identify \
 -H "Content-Type: application/json" \
@@ -182,7 +185,7 @@ curl -X POST http://localhost:3000/identify \
 }'
 ```
 
-Using Postman
+#### Using Postman
 POST http://localhost:3000/identify
 Content-Type: application/json
 ```
@@ -196,7 +199,7 @@ Content-Type: application/json
 
 ## Deployment on Render.com
 
-1. Create an account at https://render.com  
+1. Create an account at [Render] (https://render.com)  
 2. Create a new **Web Service**
 3. Connect your GitHub repository
 4. Configure the service:
@@ -212,10 +215,16 @@ Content-Type: application/json
    - Port: `3000`
 5. Click **Deploy**
 
-After deployment, Render provides a public URL:https://your-app-name.onrender.com
-
+After deployment, Render provides a public URL
+```
+https://your-app-name.onrender.com
+```
 
 ---
 
 ## Conclusion
 This project demonstrates backend fundamentals such as API design, data modeling, identity reconciliation, and cloud deployment. It ensures accurate customer identity tracking by consolidating multiple identifiers into a single unified profile.
+
+
+## Developed By
+**Santhosh Kumar**
