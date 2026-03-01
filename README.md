@@ -72,7 +72,7 @@ Customer-Identity-Reconciliation-Service/
 ## Setup Instructions
 
 ### 1. Install Node.js
-Download and install Node.js (LTS version): [Nodejs](https://nodejs.org)
+Download and install [Nodejs](https://nodejs.org) (LTS version)
 
 Verify installation:
 ```
@@ -109,6 +109,7 @@ npm run dev
 ```
 
 The server will start at:http://localhost:3000
+
 The SQLite database is auto-created on first run.
 
 ---
