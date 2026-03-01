@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Customer Identity Lookup</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+    }
+    input {
+      padding: 8px;
+      width: 300px;
+    }
+    button {
+      padding: 8px 16px;
+      margin-top: 10px;
+    }
+    table {
+      margin-top: 20px;
+      border-collapse: collapse;
+      width: 60%;
+    }
+    th, td {
+      border: 1px solid #333;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>Check Customer Identity</h2>
+
+  <input id="email" placeholder="Enter Email (optional)" />
+  <br /><br />
+  <input id="phone" placeholder="Enter Phone Number (optional)" />
+  <br /><br />
+
+  <button onclick="checkIdentity()">Check</button>
+
+  <div id="output"></div>
+
+  <script>
+    async function checkIdentity() {
+      const email = document.getElementById("email").value.trim();
+      const phoneNumber = document.getElementById("phone").value.trim();
+
+      if (!email && !phoneNumber) {
+        alert("Please enter either Email or Phone Number");
+        return;
+      }
+
+      const response = await fetch("/identify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: email || null,
+          phoneNumber: phoneNumber || null
+        })
+      });
+
+      const data = await response.json();
+      renderTable(data.contact);
+    }
+
+    function renderTable(contact) {
+      let html = `
+        <h3>Customer Identity Result</h3>
+        <table>
+          <tr>
+            <th>Primary Contact ID</th>
+            <td>${contact.primaryContatctId}</td>
+          </tr>
+          <tr>
+            <th>Emails</th>
+            <td>${contact.emails.join(", ")}</td>
+          </tr>
+          <tr>
+            <th>Phone Numbers</th>
+            <td>${contact.phoneNumbers.join(", ")}</td>
+          </tr>
+          <tr>
+            <th>Secondary Contact IDs</th>
+            <td>${contact.secondaryContactIds.join(", ") || "None"}</td>
+          </tr>
+        </table>
+      `;
+
+      document.getElementById("output").innerHTML = html;
+    }
+  </script>
+</body>
+</html>
