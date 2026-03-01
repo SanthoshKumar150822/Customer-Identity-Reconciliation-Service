@@ -180,7 +180,7 @@ Example 3:
 ### You can test the API using tools like Postman or curl.
 
 ### Using curl
-#### Using Email Only
+#### Using Email
 ```
 curl -X POST http://localhost:3000/identify \
 -H "Content-Type: application/json" \
@@ -190,7 +190,7 @@ curl -X POST http://localhost:3000/identify \
 ```
 
 or 
-#### Using Mobile number Only
+#### Using Mobile number
 
 ```
 curl -X POST http://localhost:3000/identify \
