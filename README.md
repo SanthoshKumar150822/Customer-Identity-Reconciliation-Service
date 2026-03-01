@@ -72,12 +72,15 @@ Customer-Identity-Reconciliation-Service/
 ## Setup Instructions
 
 ### 1. Install Node.js
-Download and install Node.js (LTS version):
-https://nodejs.org
+Download and install Node.js (LTS version): ([NodeJs](https://nodejs.org))
 
 Verify installation:
+```
 node -v
+```
+```
 npm -v
+```
 
 
 ---
