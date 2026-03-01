@@ -345,10 +345,17 @@ SET linkPrecedence = 'secondary', linkedId = 1
 WHERE id = 2;
 ```
 
-Update email or phone number
+Update email
 ```sql
 UPDATE Contact
 SET email = 'new@example.com', updatedAt = datetime('now')
+WHERE id = 1;
+```
+
+Update phone number
+```sql
+UPDATE Contact
+SET phoneNumber = '0123456789', updatedAt = datetime('now')
 WHERE id = 1;
 ```
 
