@@ -50,6 +50,7 @@ The goal of this project is to:
 ---
 
 ## Project Structure
+```
 Customer-Identity-Reconciliation-Service/
 │
 ├── src/
@@ -64,7 +65,7 @@ Customer-Identity-Reconciliation-Service/
 ├── database.db
 ├── .gitignore
 ├── README.md
-
+```
 
 ---
 
