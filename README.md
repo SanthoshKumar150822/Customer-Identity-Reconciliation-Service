@@ -209,6 +209,22 @@ curl -X POST http://localhost:3000/identify \
 POST `http://localhost:3000/identify`
 
 Content-Type: application/json
+
+```
+{
+  "email": "example@gmail.com"
+}
+```
+or
+
+```
+{
+  "phoneNumber": "9876543210"
+}
+```
+
+or
+
 ```
 {
   "email": "example@gmail.com",
