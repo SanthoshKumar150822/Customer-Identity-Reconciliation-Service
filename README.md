@@ -236,6 +236,31 @@ or
 }
 ```
 
+## Web Interface (UI)
+
+The application provides a simple web interface to check customer identity.
+
+**URL:**  
+`http://localhost:3000/`
+
+### UI Screen
+**Check Customer Identity**
+
+### Input Fields
+- **Enter Email** (optional)
+- **Enter Phone Number** (optional)
+
+> At least one field (Email or Phone Number) must be provided.
+
+### How It Works
+1. Open `http://localhost:3000/` in a browser
+2. Enter an email or phone number
+3. Click **Check**
+4. The consolidated customer identity is displayed in a table format
+
+---
+
+
 ---
 
 ## Deployment on Render.com
