@@ -298,14 +298,14 @@ Below are basic **CRUD (Create, Read, Update, Delete)** operations for reference
 
 ### Create (INSERT)
 
-Insert a new primary contact:
+Insert a new primary contact
 
 ```sql
 INSERT INTO Contact (email, phoneNumber, linkPrecedence, createdAt, updatedAt)
 VALUES ('user@example.com', '9876543210', 'primary', datetime('now'), datetime('now'));
 ```
 
-Insert a secondary contact linked to a primary contact:
+Insert a secondary contact linked to a primary contact
 ```sql
 INSERT INTO Contact (email, phoneNumber, linkedId, linkPrecedence, createdAt, updatedAt)
 VALUES ('alt@example.com', NULL, 1, 'secondary', datetime('now'), datetime('now'));
@@ -314,29 +314,29 @@ Read (SELECT)
 
 ### Read (SELECT)
 
-View all contacts:
+View all contacts
 ```sql
 SELECT * FROM Contact;
 ```
 
-Find contact by email:
+Find contact by email
 ```sql
 SELECT * FROM Contact WHERE email = 'user@example.com';
 ```
 
-Find contact by phone number:
+Find contact by phone number
 ```sql
 SELECT * FROM Contact WHERE phoneNumber = '9876543210';
 ```
 
-Find all contacts linked to a primary contact:
+Find all contacts linked to a primary contact
 ```sql
 SELECT * FROM Contact WHERE id = 1 OR linkedId = 1;
 ```
 
 ### Update (UPDATE)
 
-Convert a primary contact to secondary:
+Convert a primary contact to secondary
 
 
 ```sql
@@ -345,7 +345,7 @@ SET linkPrecedence = 'secondary', linkedId = 1
 WHERE id = 2;
 ```
 
-Update email or phone number:
+Update email or phone number
 ```sql
 UPDATE Contact
 SET email = 'new@example.com', updatedAt = datetime('now')
@@ -354,7 +354,7 @@ WHERE id = 1;
 
 ### Delete (Soft Delete)
 
-Soft delete a contact record:
+Soft delete a contact record
 ```sql
 UPDATE Contact
 SET deletedAt = datetime('now')
