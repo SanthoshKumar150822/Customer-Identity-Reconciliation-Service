@@ -1,6 +1,14 @@
 import Database from "better-sqlite3";
+import path from "path";
+import fs from "fs";
 
-const db = new Database("database.db");
+const dbPath = path.join(process.cwd(), "database.db");
+
+if (!fs.existsSync(dbPath)) {
+  fs.writeFileSync(dbPath, "");
+}
+
+const db = new Database(dbPath);
 
 db.exec(`
 CREATE TABLE IF NOT EXISTS Contact (
