@@ -5,50 +5,31 @@
   <title>Customer Identity Lookup</title>
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
-      height: 100vh;
+      min-height: 100vh;
       margin: 0;
       font-family: "Segoe UI", Arial, sans-serif;
       display: flex;
       align-items: center;
       justify-content: center;
-
       background: #ffd1e8;
+      padding: 20px;
     }
 
-    .card {
+    .card, .result-card {
       width: 440px;
       padding: 40px;
       text-align: center;
       border-radius: 24px;
-
       background: #ffd1e8;
       box-shadow:
         12px 12px 24px rgba(255, 122, 191, 0.35),
         -12px -12px 24px rgba(255, 255, 255, 0.9);
-
-      animation: fadeIn 0.6s ease;
     }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(15px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    h2 {
-      margin-bottom: 28px;
-      color: #000;
-    }
+    h2 { margin-bottom: 28px; color: #000; }
 
     input {
       width: 100%;
@@ -57,7 +38,6 @@
       border-radius: 14px;
       border: none;
       outline: none;
-
       background: #ffd1e8;
       box-shadow:
         inset 6px 6px 12px rgba(255, 122, 191, 0.35),
@@ -71,17 +51,15 @@
       border-radius: 16px;
       border: none;
       cursor: pointer;
-
       font-size: 16px;
       font-weight: 500;
       color: #000;
-
       background: #ffd1e8;
       box-shadow:
         6px 6px 14px rgba(255, 122, 191, 0.4),
         -6px -6px 14px rgba(255, 255, 255, 0.9);
-
       transition: all 0.25s ease;
+      margin-top: 10px;
     }
 
     button:hover {
@@ -90,11 +68,13 @@
         inset -4px -4px 8px rgba(255, 255, 255, 0.9);
     }
 
+    .result-card { display: none; }
+
     table {
       width: 100%;
-      margin-top: 26px;
       border-collapse: separate;
       border-spacing: 0 14px;
+      margin-top: 20px;
     }
 
     th, td {
@@ -107,24 +87,83 @@
         inset -4px -4px 8px rgba(255, 255, 255, 0.9);
     }
 
-    th {
-      width: 45%;
-      font-weight: 600;
-    }
+    th { width: 45%; font-weight: 600; }
   </style>
 </head>
 
 <body>
 
-  <div class="card">
+  <div class="card" id="inputCard">
     <h2>Check Customer Identity</h2>
-
-    <input placeholder="Enter Email" />
-    <input placeholder="Enter Phone Number" />
+    <input id="email" placeholder="Enter Email" />
+    <input id="phone" placeholder="Enter Phone Number" />
     <p>Enter Email or Phone Number</p>
-
-    <button>Check</button>
+    <button onclick="checkIdentity()">Search</button>
   </div>
+
+  <div class="result-card" id="resultCard">
+    <h2>Customer Identity Result</h2>
+    <table>
+      <tr><th>Primary Contact ID</th><td id="pid"></td></tr>
+      <tr><th>Emails</th><td id="emails"></td></tr>
+      <tr><th>Phone Numbers</th><td id="phones"></td></tr>
+      <tr><th>Secondary Contact IDs</th><td id="sids"></td></tr>
+    </table>
+    <button onclick="resetCheck()">New Search</button>
+  </div>
+
+<script>
+  const searchCard = document.getElementById("inputCard");
+  const resultCard = document.getElementById("resultCard");
+
+  const emailInput = document.getElementById("email");
+  const phoneInput = document.getElementById("phone");
+
+  async function checkIdentity() {
+    const email = emailInput.value.trim();
+    const phoneNumber = phoneInput.value.trim();
+
+    if (!email && !phoneNumber) return alert("Enter email or phone number");
+
+    const res = await fetch("/identify", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: email || undefined, phoneNumber: phoneNumber || undefined })
+    });
+    const data = await res.json();
+
+    searchCard.style.display = "none";
+    resultCard.style.display = "block";
+
+    if (!data.contact || !data.contact.primaryContatctId) {
+
+      resultCard.innerHTML = `
+        <h2>No records found!</h2>
+        <button onclick="resetCheck()">Search Again</button>
+      `;
+    } else {
+      const { primaryContatctId, emails, phoneNumbers, secondaryContactIds } = data.contact;
+
+      resultCard.innerHTML = `
+        <h2>Customer Identity Result</h2>
+        <table>
+          <tr><th>Primary Contact ID</th><td>${primaryContatctId}</td></tr>
+          <tr><th>Emails</th><td>${emails.join(", ")}</td></tr>
+          <tr><th>Phone Numbers</th><td>${phoneNumbers.join(", ")}</td></tr>
+          <tr><th>Secondary Contact IDs</th><td>${secondaryContactIds.join(", ") || "-"}</td></tr>
+        </table>
+        <button onclick="resetCheck()">New Search</button>
+      `;
+    }
+  }
+
+  function resetCheck() {
+    resultCard.style.display = "none";
+    searchCard.style.display = "block";
+    emailInput.value = "";
+    phoneInput.value = "";
+  }
+</script>
 
 </body>
 </html>
