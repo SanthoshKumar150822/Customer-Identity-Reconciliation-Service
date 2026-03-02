@@ -120,7 +120,7 @@ The SQLite database is auto-created on first run.
 
 ### Endpoint
 
-POST `http://localhost:3000/identify`
+POST `/identify`
 
 ### Headers
 
@@ -394,6 +394,66 @@ Records are soft-deleted to preserve identity history.
 After deployment, Render provides a public URL
 ```
 https://your-app-name.onrender.com
+```
+
+## Create Records in the Table
+### You can create records in the database using the API via tools like Postman or curl.
+
+### Using curl
+#### Using Email
+```
+curl -X POST https://your-app-name.onrender.com/identify \
+-H "Content-Type: application/json" \
+-d '{
+  "email": "example@gmail.com"
+}'
+```
+
+or 
+#### Using Mobile number
+
+```
+curl -X POST https://your-app-name.onrender.com/identify \
+-H "Content-Type: application/json" \
+-d '{ "phoneNumber": "9876543210" }'
+```
+
+or
+#### Using Email and Mobile number
+```
+curl -X POST https://your-app-name.onrender.com/identify \
+-H "Content-Type: application/json" \
+-d '{
+  "email": "dhoniplaybook@gmail.com",
+  "phoneNumber": "6379314514"
+}'
+```
+
+### Using Postman
+POST `https://your-app-name.onrender.com/identify`
+
+Content-Type: application/json
+
+```
+{
+  "email": "example@gmail.com"
+}
+```
+or
+
+```
+{
+  "phoneNumber": "9876543210"
+}
+```
+
+or
+
+```
+{
+  "email": "example@gmail.com",
+  "phoneNumber": "9876543210"
+}
 ```
 
 ---
